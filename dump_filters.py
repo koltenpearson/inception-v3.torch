@@ -51,10 +51,11 @@ def create_graph():
 
 
 def make_padding(padding_name, conv_shape):
+  padding_name = (padding_name.decode("utf-8"))
   if padding_name == "VALID":
     return [0, 0]
   elif padding_name == "SAME":
-    return [int(math.ceil(conv_shape[0]/2)), int(math.ceil(conv_shape[1]/2))]
+    return [int(math.floor(conv_shape[0]/2)), int(math.floor(conv_shape[1]/2))]
   else:
     sys.exit('Invalid padding name '+padding_name)
 
